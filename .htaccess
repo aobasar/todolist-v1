@@ -1,0 +1,9 @@
+#use proxy_http and show nodejs code on the apache.
+#https://blog.logrocket.com/configuring-apache-for-node-js/
+
+DirectoryIndex disabled
+RewriteEngine On
+RewriteRule ^$ http://localhost:3000/ [P,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
